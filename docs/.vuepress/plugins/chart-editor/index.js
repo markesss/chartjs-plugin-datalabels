@@ -22,7 +22,8 @@ module.exports = ({defaults}) => {
       {
         name: 'chart-defaults',
         content: `
-          import Chart from 'chart.js';
+          import { Chart, BarController, LineController, DoughnutController, PolarAreaController, RadarController, BubbleController, ArcElement, PointElement, LineElement, BarElement, CategoryScale, LinearScale, RadialLinearScale } from 'chart.js';
+          Chart.register(BarController, LineController, DoughnutController, PolarAreaController, RadarController, BubbleController, ArcElement, PointElement, LineElement, BarElement, CategoryScale, LinearScale, RadialLinearScale );
           Chart.defaults.set(${JSON.stringify(defaults)});
         `
       },
@@ -34,13 +35,6 @@ module.exports = ({defaults}) => {
         externals: {
           moment: 'moment',
         },
-        resolve: {
-          alias: {
-            // Don't use the Chart.js ESM build since it's not yet
-            // compatible with the current plugin implementation.
-            'chart.js': 'chart.js/dist/chart.js'
-          }
-        }
       });
     },
     chainMarkdown: (config) => {

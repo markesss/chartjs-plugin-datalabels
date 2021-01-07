@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import Chart from 'chart.js';
+import { Chart } from 'chart.js';
+import * as helpers from 'chart.js/helpers';
 import * as Utils from '../utils';
 
 // Components
@@ -21,7 +22,7 @@ import ChartActions from './ChartActions.vue';
 import ChartView from './ChartView.vue';
 import CodeEditor from './CodeEditor.vue';
 
-const CHART_DEFAULTS = Chart.helpers.merge({}, Chart.defaults);
+const CHART_DEFAULTS = helpers.merge({}, Chart.defaults);
 
 export default {
   components: {

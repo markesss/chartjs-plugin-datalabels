@@ -1,3 +1,6 @@
+const helpers = require('chart.js/helpers');
+var Color = helpers.color;
+
 function fallback(/* values ... */) {
   var ilen = arguments.length;
   var i = 0;
@@ -11,9 +14,6 @@ function fallback(/* values ... */) {
   }
 }
 
-var Color = typeof window !== 'undefined' && window.Chart !== undefined ?
-  window.Chart.helpers.color :
-  function() {};
 
 var COLORS = [
   '#FF3784',
