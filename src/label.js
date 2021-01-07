@@ -1,8 +1,8 @@
-import Chart from 'chart.js';
+import { Chart, ArcElement, PointElement, BarElement } from 'chart.js';
+import * as helpers from 'chart.js/helpers'
 import utils from './utils';
 import positioners from './positioners';
 
-var helpers = Chart.helpers;
 var rasterize = utils.rasterize;
 
 function boundingRects(model) {
@@ -47,13 +47,13 @@ function getScaleOrigin(el, context) {
 }
 
 function getPositioner(el) {
-  if (el instanceof Chart.elements.ArcElement) {
+  if (el instanceof ArcElement) {
     return positioners.arc;
   }
-  if (el instanceof Chart.elements.PointElement) {
+  if (el instanceof PointElement) {
     return positioners.point;
   }
-  if (el instanceof Chart.elements.BarElement) {
+  if (el instanceof BarElement) {
     return positioners.bar;
   }
   return positioners.fallback;

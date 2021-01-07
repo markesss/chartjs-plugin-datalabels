@@ -1,6 +1,4 @@
-import Chart from 'chart.js';
-
-var helpers = Chart.helpers;
+import * as helpers from 'chart.js/helpers'
 
 var MIN_INTEGER = Number.MIN_SAFE_INTEGER || -9007199254740991; // eslint-disable-line es/no-number-minsafeinteger
 var MAX_INTEGER = Number.MAX_SAFE_INTEGER || 9007199254740991;  // eslint-disable-line es/no-number-maxsafeinteger

@@ -1,5 +1,6 @@
 const terser = require('rollup-plugin-terser').terser;
 const pkg = require('./package.json');
+const allDependancies = Object.keys(pkg.peerDependencies);
 
 const banner = `/*!
  * ${pkg.name} v${pkg.version}
@@ -7,6 +8,12 @@ const banner = `/*!
  * (c) ${new Date().getFullYear()} Chart.js Contributors
  * Released under the ${pkg.license} license
  */`;
+ 
+ const globals = {
+	'chart.js': 'Chart',
+	'chart.js/helpers':  'Chart.helpers'
+ };
+ allDependancies.push('chart.js/helpers');
 
 module.exports = [
   {
@@ -19,9 +26,7 @@ module.exports = [
         format: 'umd',
         indent: false,
         plugins: [],
-        globals: {
-          'chart.js': 'Chart'
-        }
+        globals: globals
       };
 
       if (suffix.match(/\.min\.js$/)) {
@@ -36,8 +41,33 @@ module.exports = [
 
       return config;
     }),
-    external: [
-      'chart.js'
-    ]
+    external: allDependancies
+  },
+  {
+    input: 'src/plugin.js',
+    output: ['.js', '.min.js'].map((suffix) => {
+      const config = {
+        name: 'ChartDataLabels',
+        file: `dist/${pkg.name}.esm${suffix}`,
+        banner: banner,
+        format: 'esm',
+        indent: false,
+        plugins: [],
+        globals: globals
+      };
+
+      if (suffix.match(/\.min\.js$/)) {
+        config.plugins.push(
+          terser({
+            output: {
+              comments: /^!/
+            }
+          })
+        );
+      }
+
+      return config;
+    }),
+    external: allDependancies
   }
 ];
