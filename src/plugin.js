@@ -6,7 +6,7 @@ import Label from './label';
 import utils from './utils';
 import layout from './layout';
 import defaults from './defaults';
-import * as helpers from 'chart.js/helpers'
+import * as helpers from 'chart.js/helpers';
 
 var EXPANDO_KEY = '$datalabels';
 var DEFAULT_KEY = '$default';

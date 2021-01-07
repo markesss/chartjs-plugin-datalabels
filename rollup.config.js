@@ -8,12 +8,13 @@ const banner = `/*!
  * (c) ${new Date().getFullYear()} Chart.js Contributors
  * Released under the ${pkg.license} license
  */`;
- 
- const globals = {
-	'chart.js': 'Chart',
-	'chart.js/helpers':  'Chart.helpers'
- };
- allDependancies.push('chart.js/helpers');
+
+const globals = {
+  'chart.js': 'Chart',
+  'chart.js/helpers': 'Chart.helpers'
+};
+
+allDependancies.push('chart.js/helpers');
 
 module.exports = [
   {

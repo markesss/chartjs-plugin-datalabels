@@ -1,5 +1,5 @@
-import { Chart, ArcElement, PointElement, BarElement } from 'chart.js';
-import * as helpers from 'chart.js/helpers'
+import {Chart, ArcElement, PointElement, BarElement} from 'chart.js';
+import * as helpers from 'chart.js/helpers';
 import utils from './utils';
 import positioners from './positioners';
 
